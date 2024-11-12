@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 // import ScrollToBottom from "react-scroll-to-bottom";
-import { Message } from './Message';
-import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
+import { Message } from "./Message";
+import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 function Chat({ socket, username, room }) {
   const inputRef = useRef();
@@ -12,29 +12,29 @@ function Chat({ socket, username, room }) {
 
   const sendMessage = async () => {
     const currentMsg = inputRef.current.value;
-    if (currentMsg !== '') {
+    if (currentMsg !== "") {
       const messageData = {
         room: room,
         author: username,
         message: currentMsg,
         time:
           new Date(Date.now()).getHours() +
-          ':' +
+          ":" +
           new Date(Date.now()).getMinutes(),
       };
-      await socket.emit('send_message', messageData);
+      await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
-      inputRef.current.value = '';
+      inputRef.current.value = "";
     }
   };
   useEffect(() => {
-    socket.on('receive_message', (data) => {
+    socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
 
   useEffect(() => {
-    messageBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messageBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messageList]);
 
   return (
@@ -59,10 +59,10 @@ function Chat({ socket, username, room }) {
       <ChatInputBox>
         <ChatInput
           ref={inputRef}
-          type='text'
-          placeholder='메세지를 입력해주세요'
+          type="text"
+          placeholder="메세지를 입력해주세요"
           onKeyPress={(event) => {
-            event.key === 'Enter' && sendMessage();
+            event.key === "Enter" && sendMessage();
           }}
         />
         <ChatButton onClick={sendMessage}>▹</ChatButton>
@@ -85,7 +85,7 @@ const RoomContainer = styled.div`
 const RoomHeader = styled.div`
   height: 40px;
   border-radius: 6px 6px 0 0;
-  background: #355463;
+  background: #057cfc;
   position: relative;
 `;
 

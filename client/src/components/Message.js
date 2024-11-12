@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 export const Message = (props) => {
   const messageContent = props.messageContent;
   const username = props.username;
-  const [who, setWho] = useState('me');
+  const [who, setWho] = useState("me");
   useEffect(() => {
-    username === messageContent.author ? setWho('me') : setWho('other');
+    username === messageContent.author ? setWho("me") : setWho("other");
   }, [props]);
 
   return (
@@ -26,7 +26,7 @@ export const Message = (props) => {
 
 const MessageContainer = styled.div`
   display: flex;
-  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
+  justify-content: ${({ who }) => (who === "me" ? "flex-end" : "flex-start")};
   padding: 0 10px;
   box-sizing: border-box;
 `;
@@ -42,8 +42,8 @@ const MessageBody = styled.div`
   padding: 2px 5px;
   overflow-wrap: break-word;
   word-break: break-all;
-  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  background-color: ${({ who }) => (who === 'me' ? '#598da7' : '#2d617b')};
+  justify-content: ${({ who }) => (who === "me" ? "flex-end" : "flex-start")};
+  background-color: ${({ who }) => (who === "me" ? "#76c0ff" : "#a2d2ff")};
 `;
 
 const MessageText = styled.p`
@@ -53,9 +53,9 @@ const MessageText = styled.p`
 const MessageSub = styled.div`
   display: flex;
   font-size: 12px;
-  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  margin-right: ${({ who }) => (who === 'me' ? '10px' : '')};
-  margin-left: ${({ who }) => (who === 'me' ? '' : '10px')};
+  justify-content: ${({ who }) => (who === "me" ? "flex-end" : "flex-start")};
+  margin-right: ${({ who }) => (who === "me" ? "10px" : "")};
+  margin-left: ${({ who }) => (who === "me" ? "" : "10px")};
 `;
 
 const Time = styled.p`
